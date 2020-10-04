@@ -32,7 +32,7 @@ workflows:
     jobs:
       - run_tests
       - docker/publish:
-          image: $CIRCLE_PROJECT_REPONAME
+          image: bkmccord/$CIRCLE_PROJECT_REPONAME
           dockerfile: dockerfile
           requires:
             - run_tests
