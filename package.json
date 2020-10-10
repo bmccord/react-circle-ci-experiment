@@ -11,13 +11,11 @@
     "react-scripts": "3.4.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "start": "cross-env NODE_ENV=development react-scripts start",
+    "build": "cross-env NODE_ENV=development react-scripts build",
+    "test": "cross-env NODE_ENV=development react-scripts test",
+    "eject": "cross-env NODE_ENV=development react-scripts eject",
+    "lint": "cross-env NODE_ENV=development xo"
   },
   "browserslist": {
     "production": [
@@ -30,5 +28,114 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "babel-plugin-module-resolver": "^4.0.0",
+    "cross-env": "^7.0.2",
+    "eslint-config-xo-react": "^0.23.0",
+    "eslint-import-resolver-babel-module": "^5.1.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-react": "^7.21.3",
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "xo": "^0.33.1"
+  },
+  "eslintConfig": {
+    "extends": "react-app",
+    "plugins": [
+      "jest"
+    ]
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "bracketSpacing": false,
+    "singleQuote": true,
+    "trailingComma": "none",
+    "printWidth": 80
+  },
+  "xo": {
+    "ignore": [
+      "assets/**/*.*"
+    ],
+    "envs": [
+      "browser",
+      "node",
+      "jest"
+    ],
+    "extends": "xo-react",
+    "prettier": true,
+    "plugins": [
+      "unicorn",
+      "react"
+    ],
+    "rules": {
+      "import/extensions": [
+        "error",
+        "ignorePackages",
+        {
+          "js": "never"
+        }
+      ],
+      "complexity": [
+        2,
+        {
+          "max": 16
+        }
+      ],
+      "radix": 1,
+      "one-var": 0,
+      "import/no-unassigned-import": 0,
+      "capitalized-comments": 0,
+      "no-negated-condition": 0,
+      "no-promise-executor-return": 1,
+      "no-unused-expressions": [
+        "error",
+        {
+          "allowShortCircuit": true
+        }
+      ],
+      "prefer-template": 2,
+      "react/self-closing-comp": 0,
+      "react/boolean-prop-naming": 0,
+      "react/require-default-props": 0,
+      "react/jsx-fragments": 0,
+      "react/jsx-curly-brace-presence": 0,
+      "react/state-in-constructor": 0,
+      "react/no-unescaped-entities": "warn",
+      "unicorn/no-reduce": 0,
+      "unicorn/prefer-set-has": 0,
+      "unicorn/better-regex": 1,
+      "unicorn/prevent-abbreviations": [
+        2,
+        {
+          "replacements": {
+            "prev": false,
+            "obj": false,
+            "val": false,
+            "props": false,
+            "args": false,
+            "evt": false,
+            "prop": false,
+            "conf": false,
+            "temp": false,
+            "ref": false,
+            "mod": false,
+            "btn": false,
+            "params": false,
+            "err": false,
+            "src": false
+          }
+        }
+      ]
+    },
+    "settings": {
+      "import/resolver": {
+        "babel-module": {
+          "root": [
+            "./src"
+          ]
+        }
+      }
+    },
+    "parser": "babel-eslint"
   }
 }
